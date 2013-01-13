@@ -10,6 +10,9 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.samuelhindmarsh.ogam.january.input.Action;
+import com.samuelhindmarsh.ogam.january.input.InputManager;
+
 public class MainGameState extends BasicGameState{
 
 	@Override
@@ -27,25 +30,10 @@ public class MainGameState extends BasicGameState{
 		Input input = container.getInput();
 		
 		// TODO bind commands to inputs as in http://www.slick2d.org/wiki/index.php/Input
-		
-		String[] inputs = {"left_stick", "right_stick", "left_trigger", "right_trigger", "left_bumper", "right_bumper", "A", "B"};
-		boolean[] pressed = new boolean[inputs.length];
-		// TODO populate pressed
-		
-		pressed[0] = axisActive(input,1,0) || axisActive(input,1,1);
-		pressed[1] = axisActive(input,1,2) || axisActive(input,1,3);
-		pressed[2] = input.getAxisValue(1, 4) > deadzone;
-		pressed[3] = input.getAxisValue(1, 4) < -deadzone;
-		pressed[4] = input.isButtonPressed(4, 1);
-		pressed[5] = input.isButtonPressed(5, 1);
-		pressed[6] = input.isButtonPressed(0, 1);
-		pressed[7] = input.isButtonPressed(1, 1);
-		
-		for(int i = 0; i < inputs.length / 2; i++){
-			g.setColor(pressed[i*2] ? Color.green : Color.red);
-			g.drawString(inputs[i*2], 0, i*20+100);
-			g.setColor(pressed[i*2+1] ? Color.green : Color.red);
-			g.drawString(inputs[i*2+1], 200, i*20+100);
+		Action[] values = Action.values();
+		for(int i = 0; i < values.length; i++){
+			g.setColor(InputManager.getInstance().isControlDown(values[i]) ? Color.green : Color.red);
+			g.drawString(values[i].toString(), 20, i*20+80);
 		}
 		
 		

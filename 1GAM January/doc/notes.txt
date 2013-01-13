@@ -1,0 +1,24 @@
+Rendering a level
+  - have a transparent pixel colour (RGB(255,0,255))
+  - multiple background files (ordered from front to back)
+  - iterate over pixels in visible map area
+    - iterate over background files
+      - if pixel value is not transparent, use that
+      - otherwise, advance to next background file
+      - if there are no more background files, better just use some default pixel value (like RGB(0,0,0))
+
+
+Background files
+  - Draw hi-res art (one map screen should be about 1440x810 [16:9])
+  - Downsample to 1/8th size (Photoshop: Image Size > 12.5% -- Nearest Neighbour sampling)
+  - The new size of the image should be the same size as the internal representation of the level
+    - This ensures movement doesn't look too smooth for the art style
+  - Draw everything on screen at 8x size (may need to write my own Nearest Neighbour upscaling renderer)
+    - This will create a pixel-art effect
+  - Then can scale the drawing to whatever size the window is (using the default scaling system)
+
+
+Animations
+  - each limb should be separate from the rest of the character
+    - the body and head should be a single image
+  - can animate things individually then
