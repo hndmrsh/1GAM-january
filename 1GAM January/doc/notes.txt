@@ -1,3 +1,6 @@
+http://www.gamedev.net/page/resources/_/technical/game-programming/the-guide-to-implementing-2d-platformers-r2936
+Type #3
+
 Rendering a level
   - have a transparent pixel colour (RGB(255,0,255))
   - multiple background files (ordered from front to back)
