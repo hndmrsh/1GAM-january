@@ -9,7 +9,7 @@ import com.samuelhindmarsh.ogam.january.input.InputManager;
 
 public class JanuaryWindow extends AppGameContainer {
 	private static String TITLE = "January";
-	private static int WIDTH = 800, HEIGHT = 600;
+	public static int WIDTH = 800, HEIGHT = 600;
 	private static boolean FULLSCREEN = false;
 	
 	private static boolean DEBUG_MODE = true;

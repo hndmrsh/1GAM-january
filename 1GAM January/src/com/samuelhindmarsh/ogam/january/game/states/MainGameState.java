@@ -26,9 +26,11 @@ public class MainGameState extends BasicGameState{
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
 		
-		// TODO this is all temporary stuff
-		Input input = container.getInput();
+		debug(g);
 		
+	}
+	
+	private void debug(Graphics g){
 		// TODO bind commands to inputs as in http://www.slick2d.org/wiki/index.php/Input
 		Action[] values = Action.values();
 		for(int i = 0; i < values.length; i++){
@@ -36,17 +38,9 @@ public class MainGameState extends BasicGameState{
 			g.drawString(values[i].toString(), 20, i*20+80);
 		}
 		
-		
+		g.setColor(InputManager.getInstance().isLastInputFromController()? Color.green : Color.red);
+		g.drawString("Last input was from controller", 20, 400);
 	}
-	
-	final float deadzone = 0.2f;
-	
-	private boolean axisActive(Input input, int controller, int axis) {
-		
-		float val = input.getAxisValue(controller, axis);
-		return !(val > -deadzone && val < deadzone);
-	}
-	
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta)
