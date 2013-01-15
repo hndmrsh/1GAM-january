@@ -5,7 +5,7 @@ import org.newdawn.slick.Game;
 import org.newdawn.slick.SlickException;
 
 import com.samuelhindmarsh.ogam.january.game.JanuaryGame;
-import com.samuelhindmarsh.ogam.january.input.InputManager;
+import com.samuelhindmarsh.ogam.january.managers.InputManager;
 
 public class JanuaryWindow extends AppGameContainer {
 	private static String TITLE = "January";
@@ -27,7 +27,7 @@ public class JanuaryWindow extends AppGameContainer {
 		setShowFPS(DEBUG_MODE);
 		
 		// initialize managers
-		InputManager.getInstance().init(getInput());
+		InputManager.INSTANCE.init(getInput());
 	};
 	
 	public static void main(String[] args) throws SlickException {

@@ -11,14 +11,18 @@ import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import com.samuelhindmarsh.ogam.january.input.Action;
-import com.samuelhindmarsh.ogam.january.input.InputManager;
+import com.samuelhindmarsh.ogam.january.level.Level;
+import com.samuelhindmarsh.ogam.january.managers.InputManager;
 
 public class MainGameState extends BasicGameState{
 
+	private Level[] levels = new Level[1];
+	
 	@Override
-	public void init(GameContainer container, StateBasedGame game)
-			throws SlickException {
-		// TODO Auto-generated method stub
+	public void init(GameContainer container, StateBasedGame game) throws SlickException {
+
+		// load the first level
+		
 		
 	}
 
@@ -34,11 +38,11 @@ public class MainGameState extends BasicGameState{
 		// TODO bind commands to inputs as in http://www.slick2d.org/wiki/index.php/Input
 		Action[] values = Action.values();
 		for(int i = 0; i < values.length; i++){
-			g.setColor(InputManager.getInstance().isControlDown(values[i]) ? Color.green : Color.red);
+			g.setColor(InputManager.INSTANCE.isControlDown(values[i]) ? Color.green : Color.red);
 			g.drawString(values[i].toString(), 20, i*20+80);
 		}
 		
-		g.setColor(InputManager.getInstance().isLastInputFromController()? Color.green : Color.red);
+		g.setColor(InputManager.INSTANCE.isLastInputFromController()? Color.green : Color.red);
 		g.drawString("Last input was from controller", 20, 400);
 	}
 

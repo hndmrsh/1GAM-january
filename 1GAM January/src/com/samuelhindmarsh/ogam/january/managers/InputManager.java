@@ -1,32 +1,12 @@
-package com.samuelhindmarsh.ogam.january.input;
+package com.samuelhindmarsh.ogam.january.managers;
 
-import javax.swing.JWindow;
-
-import org.newdawn.slick.ControllerListener;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.command.Command;
-import org.newdawn.slick.command.InputProviderListener;
 
-import com.samuelhindmarsh.ogam.january.JanuaryWindow;
+import com.samuelhindmarsh.ogam.january.input.Action;
 
-public class InputManager {
-	
-	/////////////////////////////////////////////////////////
-	private static InputManager INSTANCE;
-	
-	/** Override default constructor so can't instantiate */
-	private InputManager(){}
-	
-	public static InputManager getInstance(){
-		if(INSTANCE == null){
-			INSTANCE = new InputManager();
-		}
-		
-		return INSTANCE;
-	}
-	//////////////////////////////////////////////////////////
-	
+public enum InputManager {
+	INSTANCE;
 	
 	private static float AXIS_DEADZONE = 0.2f;
 	

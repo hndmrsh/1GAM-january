@@ -25,3 +25,10 @@ Animations
   - each limb should be separate from the rest of the character
     - the body and head should be a single image
   - can animate things individually then
+  
+
+Physics (maybe this way)
+  - Use a PhysicsManager singleton
+  - Have a register(RigidBody) and unregister(RigidBody) pair of methods
+  - Every logic tick, call tick() on PhysicsManager, which calls physicsTick() on all registered objects which implement 
+    the RigidBody interface
