@@ -1,37 +1,39 @@
 package com.samuelhindmarsh.ogam.january.game.states;
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.ControllerListener;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
-import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.samuelhindmarsh.ogam.january.camera.Camera;
+import com.samuelhindmarsh.ogam.january.game.JanuaryGame;
 import com.samuelhindmarsh.ogam.january.input.Action;
 import com.samuelhindmarsh.ogam.january.level.Level;
 import com.samuelhindmarsh.ogam.january.managers.InputManager;
+import com.samuelhindmarsh.ogam.january.managers.LevelManager;
 
 public class MainGameState extends BasicGameState{
 
-	private Level[] levels = new Level[1];
+	private Level level;
+	private Camera camera;
 	
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-
-		// load the first level
-		
-		
+		level = LevelManager.INSTANCE.next();
+		camera = new Camera(level.getPlayerStart());
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
 		
-		debug(g);
+		level.render(camera, g);
 		
+		if(JanuaryGame.DEBUG){
+			debug(g);
+		}
 	}
 	
 	private void debug(Graphics g){
@@ -49,8 +51,14 @@ public class MainGameState extends BasicGameState{
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
-		// TODO Auto-generated method stub
 		
+		camera.tick(delta);
+		
+		if(InputManager.INSTANCE.isControlDown(Action.FIRE)){
+			camera.zoom(1.0, 100);
+		} else if(InputManager.INSTANCE.isControlDown(Action.GRENADE)){
+			camera.zoom(-1.0, 100);
+		}
 	}
 
 	@Override

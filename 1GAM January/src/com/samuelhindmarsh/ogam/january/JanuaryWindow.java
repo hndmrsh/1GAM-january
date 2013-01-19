@@ -6,12 +6,14 @@ import org.newdawn.slick.SlickException;
 
 import com.samuelhindmarsh.ogam.january.game.JanuaryGame;
 import com.samuelhindmarsh.ogam.january.managers.InputManager;
+import com.samuelhindmarsh.ogam.january.managers.LevelManager;
 
 public class JanuaryWindow extends AppGameContainer {
-	private static String TITLE = "January";
-	public static int WIDTH = 800, HEIGHT = 600;
-	private static boolean FULLSCREEN = false;
+	private static final String TITLE = "January";
+	public static final int WIDTH = 240, HEIGHT = 135;
 	
+	public static int WINDOW_WIDTH = 1440, WINDOW_HEIGHT = 810;
+	private static boolean FULLSCREEN = false;
 	private static boolean DEBUG_MODE = true;
 	
 	public JanuaryWindow(Game game, int width, int height, boolean fullscreen) throws SlickException {
@@ -28,12 +30,13 @@ public class JanuaryWindow extends AppGameContainer {
 		
 		// initialize managers
 		InputManager.INSTANCE.init(getInput());
+		LevelManager.INSTANCE.init();
 	};
 	
 	public static void main(String[] args) throws SlickException {
 		JanuaryGame game = new JanuaryGame(TITLE);
 		
-		JanuaryWindow window = new JanuaryWindow(game, WIDTH, HEIGHT, FULLSCREEN);
+		JanuaryWindow window = new JanuaryWindow(game, WINDOW_WIDTH, WINDOW_HEIGHT, FULLSCREEN);
 		window.setVSync(true);
 		window.start();
 		

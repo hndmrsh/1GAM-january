@@ -9,6 +9,7 @@ import com.samuelhindmarsh.ogam.january.game.states.MainGameState;
 
 public class JanuaryGame extends StateBasedGame {
 
+	public static final boolean DEBUG = true;
 	public static int STATE_MAIN_GAME = 0;
 	
 	public JanuaryGame(String title) {
@@ -19,5 +20,5 @@ public class JanuaryGame extends StateBasedGame {
 	public void initStatesList(GameContainer container) throws SlickException {
 		addState(new MainGameState());
 	}
-
+	
 }

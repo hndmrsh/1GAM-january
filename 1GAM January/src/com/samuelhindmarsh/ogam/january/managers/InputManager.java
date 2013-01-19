@@ -109,7 +109,6 @@ public enum InputManager {
 		for(int i = 0; i < input.getControllerCount(); i++){
 			if(controllerAxis < input.getAxisCount(i)){
 				float axisValue = input.getAxisValue(i, controllerAxis);
-				System.out.println(axisValue);
 				if(axisValue < 0f){
 					best = Math.min(axisValue, best);
 				} else {
